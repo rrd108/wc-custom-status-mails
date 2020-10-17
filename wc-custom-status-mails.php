@@ -49,6 +49,23 @@ function csm_payment_problem($order_id, $order)
     $order->add_order_note($subject . ' ' . __('mail sent to customer'));
 }
 
+add_action('woocommerce_order_status_simplepay-success', 'csm_simplepay_success', 20, 2);
+function csm_simplepay_success($order_id, $order)
+{
+    $heading = $subject = 'Megrendelésed beérkezett';
+
+    $mailer = setMailer($heading, $subject);
+
+    $plugin_path = '../../wc-custom-status-mails/emails';
+    $mailer["WC_Email_Customer_Completed_Order"]->template_plain = $plugin_path . '/plain/simplepay-success.php';
+    $mailer["WC_Email_Customer_Completed_Order"]->template_html = $plugin_path . '/simplepay-success.php';
+
+    // Send the email with custom heading & subject
+    $mailer['WC_Email_Customer_Completed_Order']->trigger($order_id, $order);
+
+    $order->add_order_note($subject . ' ' . __('mail sent to customer'));
+}
+
 add_action('woocommerce_order_status_simplepay-error', 'csm_simplepay_error', 20, 2);
 function csm_simplepay_error($order_id, $order)
 {

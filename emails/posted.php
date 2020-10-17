@@ -21,7 +21,8 @@ do_action('woocommerce_email_header', $email_heading, $email); ?>
 </p>
 <p>
 	<?php
-    printf(esc_html__('A csomagod követési linkje: %s', 'csm'), get_post_meta($order->get_order_number(), '_simpleTrackingUrl', true));
+	$url = 'https://gls-group.eu/HU/hu/csomagkovetes?match=' . get_post_meta($order->get_order_number(), '_GLStrackingNumber', true);
+    printf(esc_html__('A csomagod követési linkje: %s', 'csm'), $url);
     ?>
 </p>
 

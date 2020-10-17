@@ -24,7 +24,7 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 /* translators: %s: Customer first name */
 echo sprintf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
 /* translators: %s: Order number */
-echo sprintf( esc_html__( 'A %s számú rendeléseddel valami fizetési gond van. A rendelés ellenértéke nem érkezett meg hozzánk. Valami tecnikai problémába ütköztél? Segíthetünk valahogyan?', 'csm' ), esc_html( $order->get_order_number() )) . "\n\n";
+echo sprintf( esc_html__( 'A %s számú rendeléseddel valami fizetési gond van. A rendelés ellenértéke nem érkezett meg hozzánk. Valami technikai problémába ütköztél? Segíthetünk valahogyan?', 'csm' ), esc_html( $order->get_order_number() )) . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

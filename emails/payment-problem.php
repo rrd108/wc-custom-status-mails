@@ -21,7 +21,7 @@ do_action('woocommerce_email_header', $email_heading, $email); ?>
 </p>
 <p>
 	<?php
-    printf(esc_html__('A rendelés ellenértéke nem érkezett meg hozzánk. Valami tecnikai problémába ütköztél? Segíthetünk valahogyan?', 'csm'));
+    printf(esc_html__('A rendelés ellenértéke nem érkezett meg hozzánk. Valami technikai problémába ütköztél? Segíthetünk valahogyan?', 'csm'));
     ?>
 </p>
 

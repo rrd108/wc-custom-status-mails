@@ -117,6 +117,23 @@ function csm_complaint($order_id, $order)
     $order->add_order_note($subject . ' ' . __('mail sent to customer'));
 }
 
+add_action('woocommerce_order_status_payed', 'csm_payed', 20, 2);
+function csm_payed($order_id, $order)
+{
+    $heading = $subject = 'Ellenérték megérkezett';
+
+    $mailer = setMailer($heading, $subject);
+
+    $plugin_path = '../../wc-custom-status-mails/emails';
+    $mailer["WC_Email_Customer_Completed_Order"]->template_plain = $plugin_path . '/plain/payed.php';
+    $mailer["WC_Email_Customer_Completed_Order"]->template_html = $plugin_path . '/payed.php';
+
+    // Send the email with custom heading & subject
+    $mailer['WC_Email_Customer_Completed_Order']->trigger($order_id, $order);
+
+    $order->add_order_note($subject . ' ' . __('mail sent to customer'));
+}
+
 function setMailer($heading, $subject)
 {
     // Get WooCommerce email objects
